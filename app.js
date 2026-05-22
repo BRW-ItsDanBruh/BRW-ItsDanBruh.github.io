@@ -4,25 +4,43 @@ const CONFIG = {
     CORTE_APTO_BECA: 85.00
 };
 
-// Mapeo del DOM al arrancar la aplicación
+// Mapeo del DOM al arrancar la aplicación (inicialmente vacío)
 const DOM = {
-    form: document.getElementById('becaForm'),
-    promedio: document.getElementById('promedio'),
-    colegiatura: document.getElementById('colegiatura'),
-    btnEvaluar: document.getElementById('btnEvaluar'),
-    panelFeedback: document.getElementById('panelFeedback'),
-    seccionFinanciamiento: document.getElementById('seccionFinanciamiento'),
-    meses: document.getElementById('meses'),
-    btnCalcularFin: document.getElementById('btnCalcularFinanciamiento'),
-    tablaAmortizacion: document.getElementById('tablaAmortizacion'),
-    // Nodos de errores
-    errPromedio: document.getElementById('err-promedio'),
-    errColegiatura: document.getElementById('err-colegiatura'),
-    errMeses: document.getElementById('err-meses')
+    form: null,
+    promedio: null,
+    colegiatura: null,
+    btnEvaluar: null,
+    panelFeedback: null,
+    seccionFinanciamiento: null,
+    meses: null,
+    btnCalcularFin: null,
+    tablaAmortizacion: null,
+    errPromedio: null,
+    errColegiatura: null,
+    errMeses: null
 };
 
+// Inicializar referencias del DOM DESPUÉS de que DOMContentLoaded se dispare
+function inicializarDOM() {
+    DOM.form = document.getElementById('becaForm');
+    DOM.promedio = document.getElementById('promedio');
+    DOM.colegiatura = document.getElementById('colegiatura');
+    DOM.btnEvaluar = document.getElementById('btnEvaluar');
+    DOM.panelFeedback = document.getElementById('panelFeedback');
+    DOM.seccionFinanciamiento = document.getElementById('seccionFinanciamiento');
+    DOM.meses = document.getElementById('meses');
+    DOM.btnCalcularFin = document.getElementById('btnCalcularFinanciamiento');
+    DOM.tablaAmortizacion = document.getElementById('tablaAmortizacion');
+    DOM.errPromedio = document.getElementById('err-promedio');
+    DOM.errColegiatura = document.getElementById('err-colegiatura');
+    DOM.errMeses = document.getElementById('err-meses');
+}
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Primero inicializar referencias del DOM
+    inicializarDOM();
+    
+    // Luego agregar listeners
     DOM.form.addEventListener('submit', ejecutarControlFlujo);
     DOM.btnCalcularFin.addEventListener('click', procesarFinanciamiento);
     

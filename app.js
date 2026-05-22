@@ -1,5 +1,3 @@
-/
-
 // Configuración Global del Negocio
 const CONFIG = {
     INTERES_FINANCIAMIENTO: 0.05, // 5% tasa fija institucional
